@@ -1,3 +1,4 @@
+import 'package:camera_map_location/screens/add_place_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import './providers/great_places.dart';
@@ -20,6 +21,9 @@ class MyApp extends StatelessWidget {
           accentColor: Colors.amber
         ),
         home: PlacesListScreen(),
+        routes: {
+          AddPlaceScreen.routeName: (ctx) => AddPlaceScreen(),
+        },
       ),
     );
   }
