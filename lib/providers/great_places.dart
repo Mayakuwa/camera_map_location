@@ -1,3 +1,4 @@
+import 'package:camera_map_location/helper/db_helper.dart';
 import 'package:flutter/cupertino.dart';
 import '../models/place.dart';
 import 'dart:io';
@@ -18,5 +19,24 @@ class GreatPlaces with ChangeNotifier {
     );
     _items.add(newPlace);
     notifyListeners();
+    DBHelper.insert('user_places', {
+      'id': newPlace.id,
+      'title': newPlace.title,
+      'image': newPlace.image.path
+    });
   }
+
+  Future<void> fetchAndSetPlaces() async {
+    final dataList = await DBHelper.getData('user_places');
+    //add date to _item list
+    _items = dataList.map((item) => Place(
+          id: item['id'],
+          title: item['title'],
+          image: File(item['image']),
+          location: null
+        )
+    ).toList();
+    notifyListeners();
+  }
+
 }
