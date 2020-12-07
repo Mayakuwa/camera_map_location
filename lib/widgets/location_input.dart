@@ -1,4 +1,5 @@
 import 'package:camera_map_location/helper/location_helper.dart';
+import 'package:camera_map_location/screens/map_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 
@@ -19,6 +20,21 @@ class _LocationInputState extends State<LocationInput> {
     setState(() {
       _previewImages = staticMapImageUrl;
     });
+  }
+
+  Future<void> _selectOnMap() async {
+    final selectedLocation = await Navigator.of(context).push(
+        MaterialPageRoute(
+          //fullscreenDialogをtrueにすることで、×を押して戻るUIになる
+            fullscreenDialog: true,
+            builder: (ctx) => MapScreen(
+              isSelecting: true,
+            ),
+        ),
+    );
+    if(selectedLocation == null) {
+      return;
+    }
   }
 
   @override
@@ -58,7 +74,7 @@ class _LocationInputState extends State<LocationInput> {
             icon: Icon(Icons.map),
             label: Text('Select on map'),
             textColor: Theme.of(context).primaryColor,
-            onPressed: () {},
+            onPressed: _selectOnMap,
           )
         ],)
       ],
