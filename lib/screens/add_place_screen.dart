@@ -1,4 +1,5 @@
 import 'package:camera_map_location/widgets/image_input.dart';
+import 'package:camera_map_location/widgets/location_input.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:provider/provider.dart';
@@ -53,7 +54,9 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                       controller: _titleController,
                     ),
                     SizedBox(height: 10),
-                    ImageInput(_selectImage)
+                    ImageInput(_selectImage),
+                    SizedBox(height: 10),
+                    LocationInput(),
                   ],
                 ),
               ),

@@ -24,6 +24,10 @@
 	<true/>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We need to take a picture</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>Need to your location!</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Need to your location!</string>
 	<key>NSCameraUsageDescription</key>
     <string>We need to take a picture</string>
 	<key>UILaunchStoryboardName</key>
